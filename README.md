@@ -1,2 +1,2 @@
-# 1flow-integrations
-Third party data integrations
+# 1flow-aggregator
+1Flow data aggregator service
