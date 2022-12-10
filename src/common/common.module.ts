@@ -20,8 +20,9 @@ import { ProjectSurvey, ProjectSurveySchema } from './entity/project-survey.enti
 import { SurveyResponse, SurveyResponseSchema } from './entity/survey-response.entity';
 import { AwsSqsModule } from './aws-sqs/aws-sqs.module';
 import { AwsSqsService } from './aws-sqs/aws-sqs.service';
-import { EventPropertiesV2, EventPropertiesV2Schema } from './entity/event-properties-v2.entity';
+import { Properties, PropertiesSchema } from './entity/properties.entity';
 import { ClusterModule } from './cluster/cluster.module';
+import { DistinctEvents, DistinctEventsSchema } from './entity/distinct-event.entity';
 
 @Module({
     imports: [
@@ -76,8 +77,11 @@ import { ClusterModule } from './cluster/cluster.module';
             name: ProjectSurvey.name,
             schema: ProjectSurveySchema
         },{
-            name: EventPropertiesV2.name,
-            schema: EventPropertiesV2Schema
+            name: Properties.name,
+            schema: PropertiesSchema
+        },{
+            name: DistinctEvents.name,
+            schema: DistinctEventsSchema
         }]),
         AwsSqsModule,
         ClusterModule,

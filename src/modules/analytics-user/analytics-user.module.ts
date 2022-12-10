@@ -3,7 +3,7 @@ import { AnalyticsUserService } from './analytics-user.service';
 import { CommonModule } from 'src/common/common.module';
 
 @Module({
-  imports: [CommonModule],
+  imports:[CommonModule, AnalyticsUserModule],
   providers: [AnalyticsUserService],
   exports: [AnalyticsUserService]
 })

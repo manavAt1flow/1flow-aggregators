@@ -8,7 +8,8 @@ import { AnalyticsUserModule } from './modules/analytics-user/analytics-user.mod
 import { AnalyticsEventModule } from './modules/analytics-event/analytics-event.module';
 import { ProjectSurveyModule } from './modules/project-survey/project-survey.module';
 import { SurveyResponseModule } from './modules/survey-response/survey-response.module';
-import { EventPropertiesV2Module } from './modules/event-properties-v2/event-properties-v2.module';
+import { PropertiesModule } from './modules/properties/properties.module';
+import { DistinctEventsModule } from './modules/distinct-events/distinct-events.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { EventPropertiesV2Module } from './modules/event-properties-v2/event-pro
     AnalyticsEventModule,
     ProjectSurveyModule,
     SurveyResponseModule,
-    EventPropertiesV2Module,
+    PropertiesModule,
+    DistinctEventsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

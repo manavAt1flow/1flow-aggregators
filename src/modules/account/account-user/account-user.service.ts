@@ -5,14 +5,14 @@ import { AccountUser, AccountUserDocument } from '../../../common/entity/account
 
 @Injectable()
 export class AccountUserService {
-    constructor(@InjectModel(AccountUser.name) private accountUserModel: Model<AccountUserDocument>) {}
+    constructor(@InjectModel(AccountUser.name) private accountUserModel: Model<AccountUserDocument>) { }
 
-    async create(account: AccountUser):  Promise<AccountUser>{
+    async create(account: AccountUser): Promise<AccountUser> {
         const newAccount = new this.accountUserModel(account);
         return newAccount.save();
     }
 
-    async findAll():  Promise<AccountUser[]>{
+    async findAll(): Promise<AccountUser[]> {
         return await this.accountUserModel.find({});
     }
 }
