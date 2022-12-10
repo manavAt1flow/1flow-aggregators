@@ -38,7 +38,6 @@ async function bootstrap() {
   
   const swaggerConfig = new DocumentBuilder()
     .setTitle('1Flow Integration')
-    .setDescription(`API Endpoint: ${configService.get('APP_URL')}`)
     .addBasicAuth({
       type: 'http',
       scheme: 'basic',
@@ -54,11 +53,11 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(configService.get('PORT') || 80,'0.0.0.0', (err, address) => {
+  await app.listen(configService.get('PORT') || 8080,'0.0.0.0', (err, address) => {
     if (err) {
       console.log("START SERVER ERROR", err);
     }
-    console.log("SERVER ADDRESS", address);
+    console.log("SERVER ADDRESS", address, process.env.NODE_ENV);
   });
 }
 

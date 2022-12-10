@@ -6,8 +6,6 @@ import { CommonModule } from './common/common.module';
 import { AccountModule } from './modules/account/account.module'
 import { AnalyticsUserModule } from './modules/analytics-user/analytics-user.module';
 import { AnalyticsEventModule } from './modules/analytics-event/analytics-event.module';
-import { ProjectSurveyModule } from './modules/project-survey/project-survey.module';
-import { SurveyResponseModule } from './modules/survey-response/survey-response.module';
 import { PropertiesModule } from './modules/properties/properties.module';
 import { DistinctEventsModule } from './modules/distinct-events/distinct-events.module';
 
@@ -21,8 +19,6 @@ import { DistinctEventsModule } from './modules/distinct-events/distinct-events.
     AccountModule,
     AnalyticsUserModule,
     AnalyticsEventModule,
-    ProjectSurveyModule,
-    SurveyResponseModule,
     PropertiesModule,
     DistinctEventsModule,
   ],

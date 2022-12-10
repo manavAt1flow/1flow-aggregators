@@ -1,7 +1,7 @@
 # compiled output
 /dist
 /node_modules
-
+awscliv2
 # Logs
 logs
 *.log
@@ -37,3 +37,4 @@ lerna-debug.log*
 .env
 .env.prod
 package-lock.json
+aws

@@ -6,7 +6,6 @@ import { ConfigService } from "@nestjs/config";
 import { AccountUser, AccountUserSchema } from './entity/account-user.entity';
 import { Account, AccountSchema } from './entity/account.entity';
 import { Token, TokenSchema } from './entity/token.entity';
-import { Encryptor } from './utils/encryptor/encryptor';
 import { TokenService } from '../modules/account/token/token.service';
 import { AccountProject, AccountProjectSchema } from './entity/account-project.entity';
 import { Key, KeySchema } from './entity/key.entity';
@@ -14,10 +13,6 @@ import { AnalyticsEvent, AnalyticsEventSchema } from './entity/analytics-event.e
 import { AnalyticsUser, AnalyticsUserSchema } from './entity/analytics-user.entity';
 import { KeyService } from 'src/modules/account/key/key.service';
 import { AccountProjectService } from 'src/modules/account/account-project/account-project.service';
-import { KeyInterceptor } from './middleware/key.interceptor';
-import { Transformer } from './utils/transformer/transformer';
-import { ProjectSurvey, ProjectSurveySchema } from './entity/project-survey.entity';
-import { SurveyResponse, SurveyResponseSchema } from './entity/survey-response.entity';
 import { AwsSqsModule } from './aws-sqs/aws-sqs.module';
 import { AwsSqsService } from './aws-sqs/aws-sqs.service';
 import { Properties, PropertiesSchema } from './entity/properties.entity';
@@ -70,12 +65,6 @@ import { DistinctEvents, DistinctEventsSchema } from './entity/distinct-event.en
         }, {
             name: AnalyticsUser.name,
             schema: AnalyticsUserSchema
-        }, {
-            name: SurveyResponse.name,
-            schema: SurveyResponseSchema
-        }, {
-            name: ProjectSurvey.name,
-            schema: ProjectSurveySchema
         },{
             name: Properties.name,
             schema: PropertiesSchema
@@ -86,16 +75,13 @@ import { DistinctEvents, DistinctEventsSchema } from './entity/distinct-event.en
         AwsSqsModule,
         ClusterModule,
     ],
-    exports: [PinoLogger, LoggerModule, MongooseModule, KeyInterceptor, KeyService, Encryptor, Transformer, AccountProjectService, AwsSqsService],
-    providers: [PinoLogger, Encryptor, KeyInterceptor, TokenService, KeyService, Transformer, AccountProjectService, AwsSqsService],
+    exports: [PinoLogger, LoggerModule, MongooseModule, KeyService, AccountProjectService, AwsSqsService],
+    providers: [PinoLogger, TokenService, KeyService, AccountProjectService, AwsSqsService],
 })
 
 export class CommonModule implements OnModuleInit {
-    configure(consumer: MiddlewareConsumer): void {}
-
-    constructor(private configService: ConfigService) { }
+    constructor() { }
 
     onModuleInit() {
-        new Encryptor(this.configService.get<string>('ENCRYPT_ALGORITHM'), this.configService.get<string>('ENCRYPT_PASSWORD'), this.configService.get<string>('ENCRYPT_SALT'));
     }
 }
