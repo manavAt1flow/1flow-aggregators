@@ -20,6 +20,6 @@ export class AppController {
 
   @Get('/ping')
   async getHello() {
-    return {};
+    return { message: 'connected'};
   }
 }
